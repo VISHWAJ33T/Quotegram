@@ -18,6 +18,7 @@ const Feed = () => {
   const fetchPosts = async () => {
     setIsLoading(true);
     const response = await fetch("/api/quote");
+    // const response = await fetch("/api/quote", { next: { revalidate: 1 } });
     const data = await response.json();
 
     setAllPosts(data);
