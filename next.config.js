@@ -5,7 +5,7 @@ const nextConfig = {
     serverComponentsExternalPackages: ["mongoose"],
   },
   images: {
-    domains: ["lh3.google.com","lh3.googleusercontent.com", "img.freepik.com"], // Add other domains if needed
+    domains: ["lh3.google.com", "lh3.googleusercontent.com", "img.freepik.com"], // Add other domains if needed
   },
   webpack(config) {
     config.experiments = {
