@@ -7,7 +7,9 @@
 /* 
   Note: The styles for this gradient grid background is heavily inspired by the creator of this amazing site (https://dub.sh) – all credits go to them! 
 */
-
+html {
+  -webkit-tap-highlight-color: transparent;
+}
 .main {
   width: 100vw;
   min-height: 100vh;
@@ -107,6 +109,10 @@
   @apply bg-gradient-to-r from-blue-600 via-green-400 to-cyan-600 bg-clip-text text-transparent;
 }
 
+.pink_gradient {
+  @apply bg-gradient-to-r from-[#ffc813] via-[#fa2a4f] to-[#fc5167] bg-clip-text text-transparent;
+}
+
 .orange_gradient {
   @apply bg-gradient-to-r from-amber-500 via-orange-600 to-yellow-500 bg-clip-text text-transparent;
 }
@@ -155,7 +161,7 @@
 
 /* Nav Component */
 .logo_text {
-  @apply max-sm:hidden font-satoshi font-semibold text-lg text-black tracking-wide;
+  @apply max-sm:text-2xl font-satoshi font-semibold text-3xl tracking-wide;
 }
 
 .dropdown {

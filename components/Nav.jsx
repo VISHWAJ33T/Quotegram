@@ -27,11 +27,11 @@ const Nav = () => {
         <Image
           src="/assets/images/logo.svg"
           alt="Quotegram Logo"
-          width={30}
-          height={30}
-          className="object-contain"
+          width={40}
+          height={40}
+          className="object-contain rounded-[100%]"
         />
-        <p className="logo_text">Quotegram</p>
+        <p className="logo_text pink_gradient">Quotegram</p>
       </Link>
 
       {/* Desktop Navigation */}

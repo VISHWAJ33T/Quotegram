@@ -3,8 +3,9 @@ import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import QuoteCard from "@components/QuoteCard";
 import Loading from "@components/Loading";
-
+import { useRouter } from "next/navigation";
 const MyProfile = () => {
+  const router = useRouter();
   const { data: session } = useSession();
   const [myPosts, setMyPosts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);

@@ -63,12 +63,14 @@ const QuoteCard = ({ post, handleEdit, handleDelete, handleAuthorClick }) => {
       </div>
 
       <p className="my-4 font-satoshi text-sm text-gray-700">{post.quote}</p>
-      <p
-        className="text-right font-inter text-sm blue_gradient cursor-pointer"
-        onClick={() => handleAuthorClick && handleAuthorClick(post.author)}
-      >
-        -{post.author}
-      </p>
+      <div className="w-full text-right font-inter text-sm blue_gradient">
+        <span
+          onClick={() => handleAuthorClick && handleAuthorClick(post.author)}
+          className="cursor-pointer"
+        >
+          -{post.author}
+        </span>
+      </div>
 
       {session?.user.id === post.creator._id && pathName === "/profile" && (
         <div className="mt-5 flex-center gap-4 border-t border-gray-100 pt-3">
