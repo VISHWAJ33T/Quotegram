@@ -13,7 +13,7 @@ export const GET = async (request, { params }) => {
       status: 200,
     });
   } catch (error) {
-    return new Response("failed to fetch all quotes", {
+    return new Response("failed to fetch the quote", {
       status: 500,
     });
   }

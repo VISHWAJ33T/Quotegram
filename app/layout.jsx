@@ -3,7 +3,7 @@ import Provider from "@components/Provider";
 import "@styles/globals.css";
 export const metadata = {
   title: "Quotegram",
-  description: "Discover & Share AI Quotes",
+  description: "Discover & Share Quotes",
 };
 const RootLayout = ({ children }) => {
   return (
