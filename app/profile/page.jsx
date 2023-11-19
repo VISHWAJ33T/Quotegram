@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import QuoteCard from "@components/QuoteCard";
 import Loading from "@components/Loading";
 import { useRouter } from "next/navigation";
+import Nothing from "@components/Nothing";
+
 const MyProfile = () => {
   const router = useRouter();
   const { data: session } = useSession();
@@ -139,17 +141,23 @@ const MyProfile = () => {
           </button>
         </form>
       </div>
-      <div className="mt-10 quote_layout">
-        {myPosts.map((post) => (
-          <QuoteCard
-            key={post._id}
-            post={post}
-            handleEdit={() => handleEdit && handleEdit(post)}
-            handleDelete={() => handleDelete && handleDelete(post)}
-            handleAuthorClick={handleAuthorClick}
-          />
-        ))}
-      </div>
+      {myPosts.length !== 0 ? (
+        <div className="mt-10 quote_layout">
+          {myPosts.map((post) => (
+            <QuoteCard
+              key={post._id}
+              post={post}
+              handleEdit={() => handleEdit && handleEdit(post)}
+              handleDelete={() => handleDelete && handleDelete(post)}
+              handleAuthorClick={handleAuthorClick}
+            />
+          ))}
+        </div>
+      ) : !isLoading && nextPageCursor==null ? (
+        <Nothing />
+      ) : (
+        <></>
+      )}
       {isLoading && <Loading />}
       <div className="flex justify-center items-center">
         {nextPageCursor && (

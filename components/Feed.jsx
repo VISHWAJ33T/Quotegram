@@ -2,6 +2,7 @@
 import Loading from "@components/Loading";
 import { useEffect, useState } from "react";
 import QuoteCard from "./QuoteCard";
+import Nothing from "@components/Nothing";
 
 const Feed = () => {
   const [allPosts, setAllPosts] = useState([]);
@@ -95,16 +96,21 @@ const Feed = () => {
           </svg>
         </button>
       </form>
-
-      <div className="mt-16 quote_layout">
-        {allPosts.map((post) => (
-          <QuoteCard
-            key={post._id}
-            post={post}
-            handleAuthorClick={handleAuthorClick}
-          />
-        ))}
-      </div>
+      {allPosts.length !== 0 ? (
+        <div className="mt-16 quote_layout">
+          {allPosts.map((post) => (
+            <QuoteCard
+              key={post._id}
+              post={post}
+              handleAuthorClick={handleAuthorClick}
+            />
+          ))}
+        </div>
+      ) : !isLoading && nextPageCursor == null ? (
+        <Nothing />
+      ) : (
+        <></>
+      )}
       {isLoading && <Loading />}
 
       {nextPageCursor && (

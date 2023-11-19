@@ -3,6 +3,7 @@ import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import QuoteCard from "@components/QuoteCard";
 import Loading from "@components/Loading";
+import Nothing from "@components/Nothing";
 
 const UserProfile = ({ params }) => {
   const searchParams = useSearchParams();
@@ -115,17 +116,23 @@ const UserProfile = ({ params }) => {
           </button>
         </form>
       </div>
-      <div className="mt-16 quote_layout">
-        {userPosts.map((post) => (
-          <QuoteCard
-            key={post._id}
-            post={post}
-            handleEdit={() => handleEdit && handleEdit(post)}
-            handleDelete={() => handleDelete && handleDelete(post)}
-            handleAuthorClick={handleAuthorClick}
-          />
-        ))}
-      </div>
+      {userPosts.length !== 0 ? (
+        <div className="mt-16 quote_layout">
+          {userPosts.map((post) => (
+            <QuoteCard
+              key={post._id}
+              post={post}
+              handleEdit={() => handleEdit && handleEdit(post)}
+              handleDelete={() => handleDelete && handleDelete(post)}
+              handleAuthorClick={handleAuthorClick}
+            />
+          ))}
+        </div>
+      ) : !isLoading && nextPageCursor == null ? (
+        <Nothing />
+      ) : (
+        <></>
+      )}
       {isLoading && <Loading className="mb-16" />}
       <div className="flex justify-center items-center">
         {nextPageCursor && (
