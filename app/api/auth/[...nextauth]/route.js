@@ -1,6 +1,6 @@
 import User from "@models/user";
 import { connectToDB } from "@utils/database";
-import NextAuth from "next-auth/next";
+import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 
 const handler = NextAuth({
@@ -12,6 +12,7 @@ const handler = NextAuth({
   ],
   callbacks: {
     async session({ session }) {
+      await connectToDB(session);
       const sessionUser = await User.findOne({
         email: session.user.email,
       });
@@ -33,6 +34,7 @@ const handler = NextAuth({
         }
         return true;
       } catch (error) {
+        console.log("couldn't sign you in, Please try again later");
         console.log(error);
         return false;
       }

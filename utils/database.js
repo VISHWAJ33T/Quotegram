@@ -13,8 +13,6 @@ export const connectToDB = async () => {
     // await mongoose.connect("mongodb://localhost:27017", {
     await mongoose.connect(process.env.MONGODB_URI, {
       dbName: "share_quote",
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
     });
     isConnected = true;
     console.log("MongoDB Connected");
