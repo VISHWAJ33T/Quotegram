@@ -87,6 +87,22 @@ html {
   }
 }
 
+#google_translate_element {
+  position: absolute;
+  bottom: 5px;
+  right: 20px;
+}
+
+.goog-te-gadget span {
+  display: none !important;
+}
+.goog-te-gadget {
+  visibility: hidden !important;
+}
+.goog-te-gadget select {
+  visibility: visible !important;
+}
+
 /* Tailwind Styles */
 
 .app {

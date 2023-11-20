@@ -35,7 +35,8 @@ const Nav = () => {
         />
         <p className="logo_text yellow_pink_gradient">Quotegram</p>
       </Link>
-
+      <div id="google_translate_element">
+      </div>
       {/* Desktop Navigation */}
       <div className="sm:flex hidden">
         {session?.user ? (
