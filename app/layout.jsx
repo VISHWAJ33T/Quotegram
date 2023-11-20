@@ -1,5 +1,5 @@
 import Nav from "@components/Nav";
-import Translate from "../components/Translate";
+import Translate from "@components/Translate";
 import Provider from "@components/Provider";
 import "@styles/globals.css";
 export const metadata = {
