@@ -93,6 +93,10 @@ html {
   @apply relative z-10 flex justify-center items-center flex-col max-w-7xl mx-auto sm:px-16 px-6;
 }
 
+.load_btn {
+  @apply rounded-full bg-gradient-to-tl from-[#ffc813] via-[#fa2a4f] to-[#fc5167] py-1.5 px-5 text-white transition-all hover:bg-gradient-to-br text-center text-sm font-inter flex items-center justify-center;
+}
+
 .black_btn {
   @apply rounded-full border border-black bg-black py-1.5 px-5 text-white transition-all hover:bg-white hover:text-black text-center text-sm font-inter flex items-center justify-center;
 }
@@ -102,15 +106,19 @@ html {
 }
 
 .head_text {
-  @apply mt-5 text-5xl font-extrabold leading-[1.15] text-gray-800 sm:text-6xl;
+  @apply mt-5 text-5xl font-extrabold leading-[1.15] text-[#252a40] sm:text-6xl;
 }
 
 .green_blue_gradient {
   @apply bg-gradient-to-r from-blue-600 via-green-400 to-cyan-600 bg-clip-text text-transparent;
 }
 
-.pink_gradient {
+.yellow_pink_gradient {
   @apply bg-gradient-to-r from-[#ffc813] via-[#fa2a4f] to-[#fc5167] bg-clip-text text-transparent;
+}
+
+.yellow_red_gradient {
+  @apply bg-gradient-to-r from-[#ffc813] via-[#fa2a4f] to-[#ffc813] bg-clip-text text-transparent;
 }
 
 .orange_gradient {

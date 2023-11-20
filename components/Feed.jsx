@@ -36,21 +36,25 @@ const Feed = () => {
   };
 
   const handleAuthorClick = (authorName) => {
-    setSearchText(authorName);
-    setNextPageCursor("999999999999999999999999");
-    setAllPosts([]);
-    setSearchSubmit(authorName);
+    if (searchSubmit != authorName) {
+      setSearchText(authorName);
+      setNextPageCursor("999999999999999999999999");
+      setAllPosts([]);
+      setSearchSubmit(authorName);
+    }
   };
 
   return (
-    <section className="feed">
+    <section className="feed select-none">
       <form
-        className="relative w-full flex-center"
+        className="relative w-full flex-center mb-16"
         onSubmit={(e) => {
           e.preventDefault();
-          setNextPageCursor("999999999999999999999999");
-          setAllPosts([]);
-          setSearchSubmit(searchText);
+          if (searchText != searchSubmit) {
+            setNextPageCursor("999999999999999999999999");
+            setAllPosts([]);
+            setSearchSubmit(searchText);
+          }
         }}
       >
         <input
@@ -97,7 +101,7 @@ const Feed = () => {
         </button>
       </form>
       {allPosts.length !== 0 ? (
-        <div className="mt-16 quote_layout">
+        <div className="quote_layout">
           {allPosts.map((post) => (
             <QuoteCard
               key={post._id}
@@ -114,7 +118,7 @@ const Feed = () => {
       {isLoading && <Loading />}
 
       {nextPageCursor && (
-        <button onClick={handleLoadMore} className="black_btn mb-16">
+        <button onClick={handleLoadMore} className="load_btn mb-16">
           {!isLoading ? "Load More" : "Loading..."}
         </button>
       )}

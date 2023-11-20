@@ -1,11 +1,11 @@
 import Feed from "@components/Feed";
 const Home = () => {
   return (
-    <section className="w-full flex-center flex-col">
+    <section className="w-full flex-center flex-col select-none">
       <h1 className="head_text text-center">
         Discover & Share
         <br className="my-3" />
-        <span className="green_blue_gradient text-center">
+        <span className="yellow_red_gradient text-center">
           Your Favorite Quotes
         </span>
       </h1>

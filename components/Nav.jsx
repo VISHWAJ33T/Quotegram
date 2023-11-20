@@ -9,20 +9,22 @@ const Nav = () => {
 
   const [providers, setProviders] = useState(null);
   const [toggleDropdown, setToggleDropdown] = useState(false);
+
   useEffect(() => {
     const setUpProviders = async () => {
       const response = await getProviders();
-
       setProviders(response);
     };
     setUpProviders();
   }, []);
+
   const handleSignOut = async () => {
     await signOut();
     window.location.href = "/"; // Redirect using window.location.href
   };
+
   return (
-    <nav className="flex-between w-full mb-16 pt-3">
+    <nav className="flex-between w-full mb-16 pt-3 select-none">
       <Link href="/" className="flex gap-2 flex-center">
         <Image
           src="/assets/images/logo.svg"
@@ -31,7 +33,7 @@ const Nav = () => {
           height={40}
           className="object-contain rounded-[100%]"
         />
-        <p className="logo_text pink_gradient">Quotegram</p>
+        <p className="logo_text yellow_pink_gradient">Quotegram</p>
       </Link>
 
       {/* Desktop Navigation */}
@@ -46,12 +48,7 @@ const Nav = () => {
               className="outline_btn"
               onClick={() => {
                 handleSignOut();
-                // signOut();
               }}
-              // onClick={async () => {
-              //   await signOut();
-              //   navigate("/"); // Redirect to the home page
-              // }}
             >
               Sign Out
             </button>
@@ -75,7 +72,10 @@ const Nav = () => {
                 <button
                   type="button"
                   key={provider.name}
-                  onClick={() => signIn(provider.id)}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    signIn(provider.id);
+                  }}
                   className="black_btn"
                 >
                   Sign In
@@ -86,7 +86,7 @@ const Nav = () => {
       </div>
 
       {/* Mobile Navigation */}
-      <div className="sm:hidden flex relative">
+      <div className="sm:hidden flex relative z-[100]">
         {session?.user ? (
           <div className="flex">
             <Image

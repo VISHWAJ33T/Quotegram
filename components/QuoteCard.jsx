@@ -62,7 +62,9 @@ const QuoteCard = ({ post, handleEdit, handleDelete, handleAuthorClick }) => {
         </div>
       </div>
 
-      <p className="my-4 font-satoshi text-sm text-gray-700">{post.quote}</p>
+      <p className="my-4 font-satoshi text-sm text-gray-700 select-text cursor-default">
+        {post.quote}
+      </p>
       <div className="w-full text-right font-inter text-sm blue_gradient">
         <span
           onClick={() => handleAuthorClick && handleAuthorClick(post.author)}

@@ -71,14 +71,16 @@ const MyProfile = () => {
   };
 
   const handleAuthorClick = (authorName) => {
+    if (searchSubmit != authorName) {
     setSearchText(authorName);
     setNextPageCursor("999999999999999999999999");
     setMyPosts([]);
     setSearchSubmit(authorName);
+    }
   };
 
   return (
-    <section className="w-full">
+    <section className="w-full select-none">
       <div className="flex justify-between items-start flex-wrap">
         <div>
           <h1 className="head_text text-left">
@@ -89,12 +91,14 @@ const MyProfile = () => {
           </p>
         </div>
         <form
-          className="mt-10 relative w-fit min-w-[200px] flex-center"
+          className="my-10 relative w-fit min-w-[200px] flex-center"
           onSubmit={(e) => {
             e.preventDefault();
-            setNextPageCursor("999999999999999999999999");
-            setMyPosts([]);
-            setSearchSubmit(searchText);
+            if (searchText != searchSubmit) {
+              setNextPageCursor("999999999999999999999999");
+              setMyPosts([]);
+              setSearchSubmit(searchText);
+            }
           }}
         >
           <input
@@ -142,7 +146,7 @@ const MyProfile = () => {
         </form>
       </div>
       {myPosts.length !== 0 ? (
-        <div className="mt-10 quote_layout">
+        <div className="quote_layout">
           {myPosts.map((post) => (
             <QuoteCard
               key={post._id}
@@ -153,15 +157,15 @@ const MyProfile = () => {
             />
           ))}
         </div>
-      ) : !isLoading && nextPageCursor==null ? (
+      ) : !isLoading && nextPageCursor == null ? (
         <Nothing />
       ) : (
         <></>
       )}
       {isLoading && <Loading />}
-      <div className="flex justify-center items-center">
+      <div className="my-5 flex justify-center items-center">
         {nextPageCursor && (
-          <button onClick={handleLoadMore} className="black_btn mb-16">
+          <button onClick={handleLoadMore} className="load_btn mb-16">
             {!isLoading ? "Load More" : "Loading..."}
           </button>
         )}
