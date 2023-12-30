@@ -23,12 +23,20 @@ const Feed = () => {
     }${searchSubmit !== "" ? `&search=${searchSubmit}` : ""}`;
 
     const response = await fetch(url);
-    const data = await response.json();
 
-    setAllPosts(allPosts.concat(data.quotes));
+    if (!response.ok) {
+      console.error("HTTP error", response.status);
+    } else {
+      try {
+        const data = await response.json();
+        setAllPosts(allPosts.concat(data.quotes));
+        setNextPageCursor(data.nextPageCursor);
+      } catch (error) {
+        console.error("This doesn't look like a valid JSON: ", error);
+      }
+    }
 
     setIsLoading(false);
-    setNextPageCursor(data.nextPageCursor);
   };
 
   const handleLoadMore = () => {
