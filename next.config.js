@@ -5,6 +5,7 @@ const nextConfig = {
   },
   images: {
     // domains: ["lh3.google.com", "lh3.googleusercontent.com", "img.freepik.com"], // Add other domains if needed
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: "https",
