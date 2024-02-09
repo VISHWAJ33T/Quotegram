@@ -18,9 +18,8 @@ const Feed = () => {
   const fetchPosts = async () => {
     setIsLoading(true);
 
-    const url = `/api/quote?cursor=${
-      nextPageCursor || "999999999999999999999999"
-    }${searchSubmit !== "" ? `&search=${searchSubmit}` : ""}`;
+    const url = `/api/quote?cursor=${nextPageCursor || "999999999999999999999999"
+      }${searchSubmit !== "" ? `&search=${searchSubmit}` : ""}`;
 
     const response = await fetch(url);
 
